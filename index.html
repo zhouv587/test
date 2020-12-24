@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <link rel = "icon" href = "./logo.jpg" >
+        <title>白离的答题记录</title>
+        <script src="./data.js"></script>
+        <style>
+            body{
+                background: url('./bg2.jpg&refer=http___pic1.win4000.jfif') no-repeat;
+            }
+            .baili{
+                margin-top: 15px;
+                color: white;
+            }
+            .baili img{
+                float: left;
+            }
+            .color{
+                color: red;
+            }
+            .colorr{
+                color: greenyellow;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="baili"> <img src="./logo.jpg" alt="" width="40px"> 白离的答题记录</h1>
+        <div id="BaiLi"></div>
+    </body>
+
+    <script>
+        let countObj=[];
+        arr.forEach(item=>{
+            if (countObj[item]) {
+                countObj[item]++;
+            } else {
+                countObj[item] = 1;
+            }
+        });
+        let str = '';
+        countObj.forEach((val,key)=>{
+            if(val >5){
+            str += `<div class='baili'>ID:  <span class='color'>${key}</span>  截至到目前本周共答题 <span class='color'>${val}</span> 次，
+                 ------------------------------已超上限<span class='color'> ${val-5} </span>次。</div>`;
+            }else if(val <5){
+            str += `<div class='baili'>ID:  <span class='colorr'>${key}</span>  截至到目前本周共答题 <span class='colorr'>${val}</span> 次，
+                 ------------------------------还差<span class='colorr'> ${5-val} </span>次可达上限。</div>`;
+            }else{
+                str += `<div class='baili'>ID:  <span class='colorr'>${key}</span>  截至到目前本周共答题 <span class='colorr'>${val}</span> 次，
+                 ------------------------------<span class='colorr'>本周已经达到上限了。</span></div>`;
+            }
+        })
+        document.getElementById("BaiLi").innerHTML = str;
+    </script>
+</html>
